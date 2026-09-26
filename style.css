@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: #ffffff;
+}
+
+.canvas-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.canvas {
+  position: relative;
+  width: 1280px;
+  height: 832px;
+  background: #ffffff;
+  transform-origin: top center;
+}
+
+@media (max-width: 1280px) {
+  .canvas {
+    transform: scale(calc(100vw / 1280));
+  }
+  .canvas-wrap {
+    height: calc(832px * (100vw / 1280));
+  }
+}
+
+.photo {
+  position: absolute;
+  border: 15px solid #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  margin: 0;
+  font-family: "Nothing You Could Do", cursive;
+  font-size: 18px;
+  line-height: 18px;
+  color: #2e2c2a;
+  filter: url(#graphite);
+}
+
+.caption.lg {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* photo positions, matching the Figma layout */
+.photo-1 { left: 314px; top: 81px;  width: 158px; height: 211px; }
+.photo-2 { left: 716px; top: 69px;  width: 156px; height: 208px; }
+.photo-3 { left: 922px; top: 189px; width: 191px; height: 255px; }
+.photo-8 { left: 54px;  top: 197px; width: 242px; height: 182px; }
+.photo-6 { left: 81px;  top: 444px; width: 172px; height: 229px; }
+.photo-5 { left: 324px; top: 553px; width: 278px; height: 209px; }
+.photo-9 { left: 763px; top: 493px; width: 195px; height: 260px; }
+
+/* caption positions, each anchored a fixed 10px from its photo */
+.caption-1 { left: 482px; top: 150px;    width: 178px; }
+.caption-2 { left: 703px; top: 287px;    width: 180px; }
+.caption-3 { left: 922px; bottom: 653px; width: 275px; }
+.caption-5 { left: 314px; bottom: 289px; width: 332px; }
+.caption-6 { left: 68px;  top: 683px;    width: 220px; }
+.caption-8 { left: 45px;  bottom: 645px; width: 238px; }
+.caption-9 { left: 968px; top: 617px;    width: 248px; }
