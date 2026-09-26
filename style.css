@@ -15,6 +15,7 @@ html, body {
 
 .canvas {
   position: relative;
+  flex-shrink: 0;
   width: 1280px;
   height: 832px;
   background: #ffffff;
@@ -23,10 +24,10 @@ html, body {
 
 @media (min-width: 701px) and (max-width: 1280px) {
   .canvas {
-    transform: scale(calc(100vw / 1280));
+    transform: scale(calc(100vw / 1280px));
   }
   .canvas-wrap {
-    height: calc(832px * (100vw / 1280));
+    height: calc(832px * (100vw / 1280px));
   }
 }
 
@@ -99,10 +100,10 @@ html, body {
   .canvas {
     width: 402px;
     height: 992px;
-    transform: scale(min(1, calc(100vw / 402)));
+    transform: scale(min(1, calc(100vw / 402px)));
   }
   .canvas-wrap {
-    height: min(992px, calc(992px * (100vw / 402)));
+    height: min(992px, calc(992px * (100vw / 402px)));
   }
 
   .credit {
