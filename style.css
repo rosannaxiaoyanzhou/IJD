@@ -58,6 +58,17 @@ html, body {
   line-height: 20px;
 }
 
+.credit {
+  position: absolute;
+  left: 24px;
+  top: 20px;
+  margin: 0;
+  font-family: "Arbutus Slab", serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1a1a1a;
+}
+
 .svg-defs {
   position: absolute;
   width: 0;
