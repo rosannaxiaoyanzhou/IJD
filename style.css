@@ -21,7 +21,7 @@ html, body {
   transform-origin: top center;
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 701px) and (max-width: 1280px) {
   .canvas {
     transform: scale(calc(100vw / 1280));
   }
@@ -92,3 +92,43 @@ html, body {
 .caption-6 { left: 68px;  top: 683px;    width: 220px; }
 .caption-8 { left: 45px;  bottom: 645px; width: 238px; }
 .caption-9 { left: 968px; top: 617px;    width: 248px; }
+
+/* mobile layout: matches the Figma mobile design exactly at its native
+   402px width, and scales down further (never up) for narrower phones */
+@media (max-width: 700px) {
+  .canvas {
+    width: 402px;
+    height: 992px;
+    transform: scale(min(1, calc(100vw / 402)));
+  }
+  .canvas-wrap {
+    height: min(992px, calc(992px * (100vw / 402)));
+  }
+
+  .credit {
+    left: 28px;
+    top: 26px;
+  }
+
+  .caption,
+  .caption.lg {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .photo-1 { left: 232px;    top: 170px;    width: 137px;     height: 182px;     border-width: 8px;      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); }
+  .photo-2 { left: 36px;     top: 536px;    width: 128.822px; height: 171.763px; border-width: 8px;      box-shadow: 0 0 12.387px rgba(0, 0, 0, 0.15); }
+  .photo-3 { left: 201px;    top: 635px;    width: 134.83px;  height: 179.773px; border-width: 10.582px; box-shadow: 0 0 10.582px rgba(0, 0, 0, 0.15); }
+  .photo-8 { left: 35px;     top: 117px;    width: 173px;     height: 130px;     border-width: 8px;      box-shadow: 0 0 11.504px rgba(0, 0, 0, 0.15); }
+  .photo-6 { left: 41.97px;  top: 278px;    width: 131.818px; height: 175.758px; border-width: 8px;      box-shadow: 0 0 11.504px rgba(0, 0, 0, 0.15); }
+  .photo-5 { left: 183px;    top: 389px;    width: 193px;     height: 145px;     border-width: 8px;      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); }
+  .photo-9 { left: 39px;     top: 792px;    width: 107px;     height: 143px;     border-width: 9.919px;  box-shadow: 0 0 9.919px rgba(0, 0, 0, 0.15); }
+
+  .caption-1 { left: 225px; top: 110px;    width: 161px; }
+  .caption-2 { left: 30px;  top: 728px;    width: 167px; }
+  .caption-3 { left: 201px; top: 832.77px; width: 165px; bottom: auto; }
+  .caption-5 { left: 191px; top: 551px;    width: 195px; bottom: auto; }
+  .caption-6 { left: 32px;  top: 472px;    width: 135px; }
+  .caption-8 { left: 28px;  top: 71px;     width: 182.532px; bottom: auto; }
+  .caption-9 { left: 165px; top: 901px;    width: 111px; }
+}
