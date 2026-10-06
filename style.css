@@ -104,10 +104,38 @@ html, body {
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* an X just above the photo's top-right corner, as in the Figma mockup */
+.lightbox-close {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 16px);
+  z-index: 3;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #c8c8c8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lightbox-close svg {
+  display: block;
+}
+
+.lightbox-close:hover {
+  color: #ffffff;
+}
+
 .lightbox-stage {
   position: relative;
   display: inline-flex;
-  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.lightbox-stage.switching {
+  opacity: 0;
 }
 
 .lightbox-glow {
@@ -128,7 +156,6 @@ html, body {
   z-index: 1;
   display: block;
   object-fit: cover;
-  border: 10px solid var(--polaroid-paper);
   box-sizing: border-box;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
   filter: var(--polaroid-grade);
