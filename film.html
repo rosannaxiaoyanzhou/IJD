@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film · Photo Book</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Film · Photo Book">
+<meta property="og:description" content="A photo book by Ivan Dominguez.">
+<meta property="og:url" content="https://ivandominguez.xyz/film.html">
+<meta property="og:image" content="https://ivandominguez.xyz/assets/og-image.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1040">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Film · Photo Book">
+<meta name="twitter:description" content="A photo book by Ivan Dominguez.">
+<meta name="twitter:image" content="https://ivandominguez.xyz/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Arbutus+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="canvas-wrap film-wrap">
+    <div class="canvas film-canvas">
+      <a class="credit" href="index.html">Ivan Dominguez</a>
+      <nav class="site-nav">
+        <a class="nav-snapshots" href="index.html">Snapshots</a>
+        <a class="nav-film" href="film.html" aria-current="page">Film</a>
+        <a class="nav-about" href="about.html">About</a>
+      </nav>
+
+      <div class="film-row">
+        <div class="photo film film-1">
+          <img src="photos/film-1.jpg" alt="">
+        </div>
+        <div class="photo film film-2">
+          <img src="photos/film-2.jpg" alt="">
+        </div>
+        <div class="photo film film-3">
+          <img src="photos/film-3.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-stage">
+      <img class="lightbox-glow" id="lightboxGlow" alt="">
+      <img class="lightbox-img" id="lightboxImg" alt="">
+    </div>
+  </div>
+
+  <script src="lightbox.js"></script>
+</body>
+</html>

@@ -149,6 +149,20 @@ html, body {
   mix-blend-mode: soft-light;
 }
 
+/* film photos open without the polaroid grade, bloom or vignette */
+.lightbox.plain .lightbox-img {
+  filter: none;
+}
+
+.lightbox.plain .lightbox-glow {
+  filter: blur(50px) brightness(0.75);
+}
+
+.lightbox.plain .lightbox-stage::before,
+.lightbox.plain .lightbox-stage::after {
+  content: none;
+}
+
 .lightbox-stage::after {
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(30, 24, 18, 0.18) 100%);
   mix-blend-mode: multiply;
@@ -185,9 +199,9 @@ a.credit {
   text-decoration: none;
 }
 
-.nav-about {
+/* top-right page links, identical on every page; the current page is black */
+.site-nav a {
   position: absolute;
-  left: 1181px;
   top: 26px;
   font-family: "Arbutus Slab", serif;
   font-weight: 400;
@@ -198,10 +212,14 @@ a.credit {
   transition: color 0.2s ease;
 }
 
-.nav-about:hover,
-.nav-about[aria-current="page"] {
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
   color: #000000;
 }
+
+.nav-snapshots { left: 1022px; }
+.nav-film      { left: 1121px; }
+.nav-about     { left: 1181px; }
 
 .svg-defs {
   position: absolute;
@@ -210,22 +228,22 @@ a.credit {
 }
 
 /* photo positions, matching the Figma layout */
-.photo-1 { left: 314px; top: 81px;  width: 158px; height: 211px; }
-.photo-2 { left: 716px; top: 69px;  width: 156px; height: 208px; }
-.photo-3 { left: 922px; top: 189px; width: 191px; height: 255px; }
-.photo-8 { left: 54px;  top: 197px; width: 242px; height: 182px; }
-.photo-6 { left: 81px;  top: 444px; width: 172px; height: 229px; }
-.photo-5 { left: 324px; top: 553px; width: 278px; height: 209px; }
-.photo-9 { left: 763px; top: 493px; width: 195px; height: 260px; }
+.photo-1 { left: 335px; top: 81px;  width: 158px; height: 211px; }
+.photo-2 { left: 737px; top: 69px;  width: 156px; height: 208px; }
+.photo-3 { left: 943px; top: 189px; width: 191px; height: 255px; }
+.photo-8 { left: 75px;  top: 197px; width: 242px; height: 182px; }
+.photo-6 { left: 102px; top: 444px; width: 172px; height: 229px; }
+.photo-5 { left: 345px; top: 553px; width: 278px; height: 209px; }
+.photo-9 { left: 784px; top: 493px; width: 195px; height: 260px; }
 
 /* caption positions, each anchored a fixed 10px from its photo */
-.caption-1 { left: 482px; top: 150px;    width: 178px; }
-.caption-2 { left: 703px; top: 287px;    width: 180px; }
-.caption-3 { left: 922px; bottom: 653px; width: 275px; }
-.caption-5 { left: 314px; bottom: 289px; width: 332px; }
-.caption-6 { left: 68px;  top: 683px;    width: 220px; }
-.caption-8 { left: 45px;  bottom: 645px; width: 238px; }
-.caption-9 { left: 968px; top: 617px;    width: 248px; }
+.caption-1 { left: 503px; top: 150px;    width: 178px; }
+.caption-2 { left: 724px; top: 287px;    width: 180px; }
+.caption-3 { left: 943px; bottom: 653px; width: 275px; }
+.caption-5 { left: 335px; bottom: 289px; width: 332px; }
+.caption-6 { left: 89px;  top: 683px;    width: 220px; }
+.caption-8 { left: 66px;  bottom: 645px; width: 238px; }
+.caption-9 { left: 989px; top: 617px;    width: 248px; }
 
 /* mobile layout: matches the Figma mobile design exactly at its native
    402px width, and scales down further (never up) for narrower phones */
@@ -239,9 +257,16 @@ a.credit {
     height: min(992px, calc(992px * (100vw / 402px)));
   }
 
-  .nav-about {
-    left: auto;
+  .site-nav {
+    position: absolute;
+    top: 26px;
     right: 28px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .site-nav a {
+    position: static;
   }
 
   .caption,
@@ -378,5 +403,54 @@ a.credit {
     width: 180px;
     height: 265.8px;
     margin: 40px auto 0;
+  }
+}
+
+/* ---------- film page ---------- */
+
+/* a centered row of three, matching the Figma frame */
+.film-row {
+  position: absolute;
+  left: 50%;
+  top: 142px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+/* black-and-white film: no polaroid grade, bloom or vignette */
+.photo.film {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.photo.film img {
+  filter: none;
+}
+
+.photo.film::before,
+.photo.film::after {
+  content: none;
+}
+
+.film-1 { width: 267px;     height: 150px;     border-width: 11.25px; box-shadow: 0 0 11.25px rgba(0, 0, 0, 0.15); }
+.film-2 { width: 266.087px; height: 149.739px; border-width: 9.783px; box-shadow: 0 0 9.783px rgba(0, 0, 0, 0.15); }
+.film-3 { width: 266.518px; height: 150px;     border-width: 10.045px; box-shadow: 0 0 10.045px rgba(0, 0, 0, 0.15); }
+
+/* no mobile frame in Figma yet: stack the three in the 402px column */
+@media (max-width: 700px) {
+  .canvas.film-canvas {
+    height: 700px;
+  }
+
+  .film-wrap {
+    height: min(700px, calc(700px * (100vw / 402px)));
+  }
+
+  .film-row {
+    top: 100px;
+    flex-direction: column;
+    gap: 40px;
   }
 }
