@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* shared "polaroid" treatment: bright, low-contrast flash-photo look */
+  --polaroid-grade: contrast(0.85) brightness(1.2) saturate(1.1) sepia(0.06);
+  --polaroid-paper: #ffffff;
+}
+
 html, body {
   margin: 0;
   background: #ffffff;
@@ -33,7 +39,7 @@ html, body {
 
 .photo {
   position: absolute;
-  border: 15px solid #ffffff;
+  border: 15px solid var(--polaroid-paper);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   z-index: 1;
@@ -50,6 +56,29 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: var(--polaroid-grade);
+}
+
+/* soft, dreamy highlight bloom over each photo */
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at 40% 32%, rgba(255, 248, 230, 0.4), rgba(255, 248, 230, 0) 62%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* faint vignette over each photo */
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(30, 24, 18, 0.18) 100%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .lightbox {
@@ -87,7 +116,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(50px) brightness(0.8) saturate(1.15);
+  filter: var(--polaroid-grade) blur(50px) brightness(0.75) saturate(1.15);
   transform: scale(1.3);
   z-index: 0;
   border-radius: 20px;
@@ -99,9 +128,30 @@ html, body {
   z-index: 1;
   display: block;
   object-fit: cover;
-  border: 10px solid #ffffff;
+  border: 10px solid var(--polaroid-paper);
   box-sizing: border-box;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  filter: var(--polaroid-grade);
+}
+
+/* soft highlight bloom + faint vignette over the enlarged photo */
+.lightbox-stage::before,
+.lightbox-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lightbox-stage::before {
+  background: radial-gradient(ellipse at 40% 32%, rgba(255, 248, 230, 0.4), rgba(255, 248, 230, 0) 62%);
+  mix-blend-mode: soft-light;
+}
+
+.lightbox-stage::after {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(30, 24, 18, 0.18) 100%);
+  mix-blend-mode: multiply;
 }
 
 .caption {
@@ -121,13 +171,35 @@ html, body {
 
 .credit {
   position: absolute;
-  left: 20px;
-  top: 20px;
+  left: 28px;
+  top: 26px;
   margin: 0;
   font-family: "Arbutus Slab", serif;
   font-weight: 400;
   font-size: 18px;
-  color: #1a1a1a;
+  line-height: 18px;
+  color: #000000;
+}
+
+a.credit {
+  text-decoration: none;
+}
+
+.nav-about {
+  position: absolute;
+  left: 1181px;
+  top: 26px;
+  font-family: "Arbutus Slab", serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #6e6e6e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-about:hover {
+  color: #000000;
 }
 
 .svg-defs {
@@ -166,9 +238,9 @@ html, body {
     height: min(992px, calc(992px * (100vw / 402px)));
   }
 
-  .credit {
-    left: 28px;
-    top: 26px;
+  .nav-about {
+    left: auto;
+    right: 28px;
   }
 
   .caption,
@@ -192,4 +264,118 @@ html, body {
   .caption-6 { left: 32px;  top: 472px;    width: 135px; }
   .caption-8 { left: 28px;  top: 71px;     width: 182.532px; bottom: auto; }
   .caption-9 { left: 165px; top: 901px;    width: 111px; }
+}
+
+/* ---------- about page ---------- */
+
+.about-title {
+  position: absolute;
+  left: 143px;
+  top: 167px;
+  margin: 0;
+  font-family: "Nothing You Could Do", cursive;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 80px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.about-body {
+  position: absolute;
+  left: 143px;
+  top: 366px;
+  width: 620px;
+  font-family: "Nothing You Could Do", cursive;
+  font-size: 18px;
+  line-height: 22.5px;
+  color: #000000;
+}
+
+.about-body p {
+  margin: 0 0 22.5px;
+}
+
+.about-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* the box is the default pose; the hover pose is offset from it so both
+   land exactly where the two Figma frames place them */
+.ivan {
+  position: absolute;
+  left: 904.34px;
+  top: 452.86px;
+  width: 253.37px;
+  height: 374.16px;
+}
+
+.ivan img {
+  position: absolute;
+  display: block;
+}
+
+.ivan-default {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ivan-hover {
+  left: -30.66%;
+  top: -1.30%;
+  width: 160.89%;
+  height: 102.63%;
+  visibility: hidden;
+}
+
+.ivan:hover .ivan-default {
+  visibility: hidden;
+}
+
+.ivan:hover .ivan-hover {
+  visibility: visible;
+}
+
+/* no mobile frame in Figma yet: stack the text and keep the figure at the end */
+@media (max-width: 700px) {
+  .about-wrap {
+    height: auto;
+  }
+
+  .canvas.about {
+    width: 402px;
+    height: auto;
+    transform: none;
+    zoom: min(1, calc(100vw / 402px));
+    padding: 90px 28px 0;
+    overflow: hidden;
+  }
+
+  .about-title {
+    position: static;
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .about-body {
+    position: static;
+    width: auto;
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .about-body p {
+    margin-bottom: 20px;
+  }
+
+  .ivan {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 180px;
+    height: 265.8px;
+    margin: 40px auto 0;
+  }
 }
