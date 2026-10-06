@@ -198,7 +198,8 @@ a.credit {
   transition: color 0.2s ease;
 }
 
-.nav-about:hover {
+.nav-about:hover,
+.nav-about[aria-current="page"] {
   color: #000000;
 }
 
