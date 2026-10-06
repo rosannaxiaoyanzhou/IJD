@@ -272,7 +272,7 @@ a.credit {
 .about-title {
   position: absolute;
   left: 143px;
-  top: 167px;
+  top: 147px;
   margin: 0;
   font-family: "Nothing You Could Do", cursive;
   font-weight: 400;
@@ -285,7 +285,7 @@ a.credit {
 .about-body {
   position: absolute;
   left: 143px;
-  top: 366px;
+  top: 346px;
   width: 620px;
   font-family: "Nothing You Could Do", cursive;
   font-size: 18px;
@@ -349,7 +349,7 @@ a.credit {
     height: auto;
     transform: none;
     zoom: min(1, calc(100vw / 402px));
-    padding: 90px 28px 0;
+    padding: 70px 28px 0;
     overflow: hidden;
   }
 
