@@ -104,6 +104,33 @@ html, body {
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* the system cursor is replaced by .lightbox-arrow while browsing */
+.lightbox.active {
+  cursor: none;
+}
+
+.lightbox-arrow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1001;
+  display: none;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.lightbox-arrow.visible {
+  display: block;
+}
+
+.lightbox-arrow svg {
+  display: block;
+}
+
+.lightbox-arrow.prev svg {
+  transform: scaleX(-1);
+}
+
 /* an X just above the photo's top-right corner, as in the Figma mockup */
 .lightbox-close {
   position: absolute;
