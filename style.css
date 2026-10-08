@@ -462,21 +462,36 @@ a.credit {
 
 /* ---------- film page ---------- */
 
-/* a centered row of three, matching the Figma frame */
+/* a centered row of three, matching the Figma frame; the photos keep
+   their original spots, the cards' 15px padding sits around them */
 .film-row {
   position: absolute;
   left: 50%;
-  top: 142px;
+  top: 127px;
   transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  gap: 100px;
+  align-items: flex-start;
+  gap: 71px;
 }
 
-/* black-and-white film: no polaroid grade, bloom or vignette */
+/* black-and-white film in a white card with a handwritten caption below,
+   as in the Figma "Frame 12/13/14" cards; no polaroid grade, bloom or vignette */
 .photo.film {
   position: relative;
   flex-shrink: 0;
+  width: 296px;
+  padding: 15px;
+  border: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 10px #d1d1d1, inset 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+.photo.film:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), inset 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
 .photo.film img {
@@ -488,23 +503,38 @@ a.credit {
   content: none;
 }
 
-.film-1 { width: 267px;     height: 150px;     border-width: 11.25px; box-shadow: 0 0 11.25px rgba(0, 0, 0, 0.15); }
-.film-2 { width: 266.087px; height: 149.739px; border-width: 9.783px; box-shadow: 0 0 9.783px rgba(0, 0, 0, 0.15); }
-.film-3 { width: 266.518px; height: 150px;     border-width: 10.045px; box-shadow: 0 0 10.045px rgba(0, 0, 0, 0.15); }
+.film-shot {
+  flex-shrink: 0;
+}
+
+.film-caption {
+  margin: 0;
+  font-family: "Nothing You Could Do", cursive;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.film-1 .film-shot { width: 267px;     height: 150px;     box-shadow: 0 0 11.25px rgba(0, 0, 0, 0.15); }
+.film-2 .film-shot { width: 266.087px; height: 149.739px; box-shadow: 0 0 9.783px rgba(0, 0, 0, 0.15); }
+.film-3 .film-shot { width: 266.518px; height: 150px;     box-shadow: 0 0 10.045px rgba(0, 0, 0, 0.15); }
 
 /* no mobile frame in Figma yet: stack the three in the 402px column */
 @media (max-width: 700px) {
   .canvas.film-canvas {
-    height: 700px;
+    height: 820px;
   }
 
   .film-wrap {
-    height: min(700px, calc(700px * (100vw / 402px)));
+    height: min(820px, calc(820px * (100vw / 402px)));
   }
 
   .film-row {
-    top: 100px;
+    top: 85px;
     flex-direction: column;
+    align-items: center;
     gap: 40px;
   }
 }
