@@ -412,12 +412,18 @@ a.credit {
   height: 305px;
 }
 
-/* 0.25s cross-fade: ease-in on the way in, ease-out on the way back */
+/* 0.25s cross-fade: ease-in on the way in, ease-out on the way back;
+   the stickers come and go with the waving pose */
 .ivan img,
 .about-emoji {
   position: absolute;
   display: block;
   transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.ivan:hover img,
+.about-card:has(.ivan:hover) .about-emoji {
+  transition-timing-function: ease-in;
 }
 
 .ivan-default {
@@ -459,11 +465,6 @@ a.credit {
 .about-card:has(.ivan:hover) .about-emoji {
   opacity: 1;
   transform: rotate(var(--tilt, 0deg)) scale(1);
-}
-
-.ivan:hover img,
-.about-card:has(.ivan:hover) .about-emoji {
-  transition-timing-function: ease-in;
 }
 
 /* no mobile frame in Figma yet: stack the text and keep the figure at the end */
