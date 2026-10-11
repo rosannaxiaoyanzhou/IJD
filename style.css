@@ -511,23 +511,20 @@ a.credit {
 
 /* ---------- film page ---------- */
 
-/* a centered row of three, matching the Figma frame; the photos keep
-   their original spots, the cards' 15px padding sits around them */
-.film-row {
-  position: absolute;
-  left: 50%;
-  top: 127px;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: flex-start;
-  gap: 71px;
+/* the film page is taller than the others: 1280x1303 in Figma */
+.canvas.film-canvas {
+  height: 1303px;
+}
+
+@media (min-width: 701px) and (max-width: 1280px) {
+  .film-wrap {
+    height: calc(1303px * (100vw / 1280px));
+  }
 }
 
 /* black-and-white film in a white card with a handwritten caption below,
-   as in the Figma "Frame 12/13/14" cards; no polaroid grade, bloom or vignette */
+   as in the Figma "Frame 12" cards; no polaroid grade, bloom or vignette */
 .photo.film {
-  position: relative;
-  flex-shrink: 0;
   width: 296px;
   padding: 15px;
   border: 0;
@@ -566,24 +563,46 @@ a.credit {
   white-space: nowrap;
 }
 
+/* card positions, matching the Figma layout: two rows of three, then
+   the two tall ones */
+.film-1 { left: 136px; top: 142px; }
+.film-2 { left: 492px; top: 142px; }
+.film-3 { left: 848px; top: 142px; }
+.film-4 { left: 136px; top: 407px; }
+.film-5 { left: 492px; top: 407px; }
+.film-6 { left: 848px; top: 407px; }
+.film-7 { left: 292px; top: 680px; }
+.film-8 { left: 692px; top: 680px; }
+
 .film-1 .film-shot { width: 267px;     height: 150px;     box-shadow: 0 0 11.25px rgba(0, 0, 0, 0.15); }
 .film-2 .film-shot { width: 266.087px; height: 149.739px; box-shadow: 0 0 9.783px rgba(0, 0, 0, 0.15); }
 .film-3 .film-shot { width: 266.518px; height: 150px;     box-shadow: 0 0 10.045px rgba(0, 0, 0, 0.15); }
+.film-4 .film-shot,
+.film-5 .film-shot,
+.film-6 .film-shot { width: 266px;     height: 149.69px; }
+.film-7 .film-shot,
+.film-8 .film-shot { width: 266px;     height: 472.684px; }
 
-/* no mobile frame in Figma yet: stack the three in the 402px column */
+/* no mobile frame in Figma yet: stack the cards in the 402px column */
 @media (max-width: 700px) {
-  .canvas.film-canvas {
-    height: 820px;
-  }
-
   .film-wrap {
-    height: min(820px, calc(820px * (100vw / 402px)));
+    height: auto;
   }
 
-  .film-row {
-    top: 85px;
+  .canvas.film-canvas {
+    height: auto;
+    transform: none;
+    zoom: min(1, calc(100vw / 402px));
+    padding: 85px 0 40px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
+  }
+
+  .photo.film {
+    position: relative;
+    left: auto;
+    top: auto;
   }
 }
