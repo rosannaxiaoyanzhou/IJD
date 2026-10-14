@@ -23,9 +23,8 @@ function showPhoto(photo) {
 
   const maxWidth = window.innerWidth * 0.88;
   const ratio = img.naturalWidth / img.naturalHeight;
-  // vertical film photos open larger so they don't look small next to the wide ones
-  const isTallFilm = photo.classList.contains('film') && ratio < 1;
-  const targetHeight = window.innerHeight * (isTallFilm ? 0.85 : 0.62);
+  // vertical photos open larger so they don't look small next to the wide ones
+  const targetHeight = window.innerHeight * (ratio < 1 ? 0.85 : 0.62);
 
   let width = targetHeight * ratio;
   let height = targetHeight;
