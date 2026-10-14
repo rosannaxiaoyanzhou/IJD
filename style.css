@@ -328,6 +328,7 @@ a.credit {
 .photo-6 { width: 172px; height: calc(229px + var(--extra)); }
 .photo-5 { width: 278px; height: calc(209px + var(--extra)); }
 .photo-9 { width: 195px; height: calc(260px + var(--extra)); }
+.photo-10 { width: 180px; height: calc(240px + var(--extra)); }
 
 /* ---------- homepage: infinite canvas ---------- */
 
@@ -432,6 +433,7 @@ body.home {
   .photo-6 { width: 131.818px; height: calc(175.758px + var(--extra)); --pad: 8px; }
   .photo-5 { width: 193px;     height: calc(145px + var(--extra)); --pad: 8px; }
   .photo-9 { width: 107px;     height: calc(143px + var(--extra)); --pad: 9.919px; }
+  .photo-10 { width: 132px;     height: calc(176px + var(--extra)); --pad: 8px; }
 }
 
 /* ---------- about page ---------- */
