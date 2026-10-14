@@ -319,23 +319,77 @@ a.credit {
   height: 0;
 }
 
-/* photo positions, matching the Figma layout */
-.photo-1 { left: 335px; top: 81px;  width: 158px; height: calc(211px + var(--extra)); }
-.photo-2 { left: 737px; top: 69px;  width: 156px; height: calc(208px + var(--extra)); }
-.photo-3 { left: 943px; top: 189px; width: 191px; height: calc(255px + var(--extra)); }
-.photo-8 { left: 75px;  top: 197px; width: 242px; height: calc(182px + var(--extra)); }
-.photo-6 { left: 102px; top: 444px; width: 172px; height: calc(229px + var(--extra)); }
-.photo-5 { left: 345px; top: 553px; width: 278px; height: calc(209px + var(--extra)); }
-.photo-9 { left: 784px; top: 493px; width: 195px; height: calc(260px + var(--extra)); }
+/* photo sizes, matching the Figma layout; where each one lands is
+   picked at random by infinite.js */
+.photo-1 { width: 158px; height: calc(211px + var(--extra)); }
+.photo-2 { width: 156px; height: calc(208px + var(--extra)); }
+.photo-3 { width: 191px; height: calc(255px + var(--extra)); }
+.photo-8 { width: 242px; height: calc(182px + var(--extra)); }
+.photo-6 { width: 172px; height: calc(229px + var(--extra)); }
+.photo-5 { width: 278px; height: calc(209px + var(--extra)); }
+.photo-9 { width: 195px; height: calc(260px + var(--extra)); }
 
-/* caption positions, each anchored a fixed 10px from its photo */
-.caption-1 { left: 503px; top: 150px;    width: 178px; }
-.caption-2 { left: 724px; top: 307px;    width: 180px; }
-.caption-3 { left: 943px; bottom: 653px; width: 275px; }
-.caption-5 { left: 335px; bottom: 289px; width: 332px; }
-.caption-6 { left: 89px;  top: 703px;    width: 220px; }
-.caption-8 { left: 66px;  bottom: 645px; width: 238px; }
-.caption-9 { left: 989px; top: 617px;    width: 248px; }
+/* ---------- homepage: infinite canvas ---------- */
+
+body.home {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* the name and links float over the canvas on a fading strip of paper */
+.canvas-wrap.header-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: auto;
+  pointer-events: none;
+  background: linear-gradient(#ffffff 55%, rgba(255, 255, 255, 0));
+}
+
+.canvas.header-canvas {
+  height: 80px;
+  background: none;
+}
+
+.header-canvas a {
+  pointer-events: auto;
+}
+
+.infinite {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.infinite.dragging {
+  cursor: grabbing;
+}
+
+/* each photo travels with its caption, 10px below it */
+.item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  will-change: transform;
+}
+
+.item .photo {
+  position: relative;
+}
+
+.item .caption {
+  position: static;
+  width: max-content;
+  max-width: 260px;
+  margin-top: 10px;
+}
 
 /* mobile layout: matches the Figma mobile design exactly at its native
    402px width, and scales down further (never up) for narrower phones */
@@ -367,21 +421,17 @@ a.credit {
     line-height: 12px;
   }
 
-  .photo-1 { left: 232px;    top: 170px;    width: 137px;     height: calc(182px + var(--extra)); --pad: 8px; }
-  .photo-2 { left: 36px;     top: 536px;    width: 128.822px; height: calc(171.763px + var(--extra)); --pad: 8px; }
-  .photo-3 { left: 201px;    top: 635px;    width: 134.83px;  height: calc(179.773px + var(--extra)); --pad: 10.582px; }
-  .photo-8 { left: 35px;     top: 117px;    width: 173px;     height: calc(130px + var(--extra)); --pad: 8px; }
-  .photo-6 { left: 41.97px;  top: 278px;    width: 131.818px; height: calc(175.758px + var(--extra)); --pad: 8px; }
-  .photo-5 { left: 183px;    top: 389px;    width: 193px;     height: calc(145px + var(--extra)); --pad: 8px; }
-  .photo-9 { left: 39px;     top: 792px;    width: 107px;     height: calc(143px + var(--extra)); --pad: 9.919px; }
+  .item .caption {
+    max-width: 170px;
+  }
 
-  .caption-1 { left: 225px; top: 110px;    width: 161px; }
-  .caption-2 { left: 30px;  top: 738.67px;    width: 167px; }
-  .caption-3 { left: 201px; top: 846.88px; width: 165px; bottom: auto; }
-  .caption-5 { left: 191px; top: 561.67px;    width: 195px; bottom: auto; }
-  .caption-6 { left: 32px;  top: 482.67px;    width: 135px; }
-  .caption-8 { left: 28px;  top: 71px;     width: 182.532px; bottom: auto; }
-  .caption-9 { left: 165px; top: 901px;    width: 111px; }
+  .photo-1 { width: 137px;     height: calc(182px + var(--extra)); --pad: 8px; }
+  .photo-2 { width: 128.822px; height: calc(171.763px + var(--extra)); --pad: 8px; }
+  .photo-3 { width: 134.83px;  height: calc(179.773px + var(--extra)); --pad: 10.582px; }
+  .photo-8 { width: 173px;     height: calc(130px + var(--extra)); --pad: 8px; }
+  .photo-6 { width: 131.818px; height: calc(175.758px + var(--extra)); --pad: 8px; }
+  .photo-5 { width: 193px;     height: calc(145px + var(--extra)); --pad: 8px; }
+  .photo-9 { width: 107px;     height: calc(143px + var(--extra)); --pad: 9.919px; }
 }
 
 /* ---------- about page ---------- */

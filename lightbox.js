@@ -3,7 +3,8 @@ const lightboxStage = document.getElementById('lightboxStage');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxGlow = document.getElementById('lightboxGlow');
 const lightboxClose = document.getElementById('lightboxClose');
-const photos = Array.from(document.querySelectorAll('.photo'));
+// copies of a photo on the homepage canvas (data-clone) open their original
+const photos = Array.from(document.querySelectorAll('.photo:not([data-clone])'));
 let activeIndex = -1;
 let switchTimer = null;
 
@@ -77,8 +78,12 @@ function step(direction) {
   }, 150);
 }
 
-photos.forEach((photo, index) => {
-  photo.addEventListener('click', e => openLightbox(index, e.clientX, e.clientY, e.pointerType));
+// (delegated, so copies made after this script runs open too)
+document.addEventListener('click', e => {
+  const photo = e.target.closest('.photo');
+  if (!photo) return;
+  const index = photo.dataset.clone !== undefined ? Number(photo.dataset.clone) : photos.indexOf(photo);
+  openLightbox(index, e.clientX, e.clientY, e.pointerType);
 });
 
 lightbox.addEventListener('pointermove', e => {
