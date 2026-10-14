@@ -292,9 +292,16 @@ a.credit {
 }
 
 /* top-right page links, identical on every page; the current page is black */
-.site-nav a {
+.site-nav {
   position: absolute;
   top: 26px;
+  right: 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 29px;
+}
+
+.site-nav a {
   font-family: "Arbutus Slab", serif;
   font-weight: 400;
   font-size: 14px;
@@ -309,9 +316,32 @@ a.credit {
   color: #000000;
 }
 
-.nav-snapshots { left: 1022px; }
-.nav-film      { left: 1121px; }
-.nav-about     { left: 1181px; }
+/* the EN | ES switch after the links: smaller and lighter, the current
+   language a shade darker */
+.lang-switch {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: "Arbutus Slab", serif;
+  font-size: 11px;
+  line-height: 18px;
+  color: #c4c4c4;
+}
+
+.lang-switch button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lang-switch button:hover,
+.lang-switch button[aria-pressed="true"] {
+  color: #8a8a8a;
+}
 
 .svg-defs {
   position: absolute;
@@ -354,7 +384,8 @@ body.home {
   background: none;
 }
 
-.header-canvas a {
+.header-canvas a,
+.header-canvas button {
   pointer-events: auto;
 }
 
@@ -405,15 +436,19 @@ body.home {
   }
 
   .site-nav {
-    position: absolute;
-    top: 26px;
-    right: 28px;
-    display: flex;
     gap: 16px;
   }
 
-  .site-nav a {
-    position: static;
+  /* the Spanish links run longer; close up so they clear the name */
+  html[lang="es"] .site-nav {
+    gap: 11px;
+  }
+
+  /* no room beside the links on a phone, so it sits just under them */
+  .lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 0;
   }
 
   .caption,

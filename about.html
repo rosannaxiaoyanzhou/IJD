@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About · Photo Book</title>
+<title data-es="Sobre mí · Libro de fotos">About · Photo Book</title>
 
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -33,18 +33,23 @@
     <div class="canvas about">
       <a class="credit" href="index.html">Ivan Dominguez</a>
       <nav class="site-nav">
-        <a class="nav-snapshots" href="index.html">Snapshots</a>
-        <a class="nav-film" href="film.html">Film</a>
-        <a class="nav-about" href="about.html" aria-current="page">About</a>
+        <a class="nav-snapshots" data-es="Fotos" href="index.html">Snapshots</a>
+        <a class="nav-film" data-es="Analógico" href="film.html">Film</a>
+        <a class="nav-about" data-es="Sobre mí" href="about.html" aria-current="page">About</a>
+        <div class="lang-switch">
+          <button type="button" data-lang="en">EN</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" data-lang="es">ES</button>
+        </div>
       </nav>
 
-      <h1 class="about-title">Hellooooooo<br>I’m Ivan</h1>
+      <h1 class="about-title" data-es="Holaaaaaaaa<br>Soy Ivan">Hellooooooo<br>I’m Ivan</h1>
 
       <div class="about-body">
-        <p>I didn't set out as a photographer. It started when I picked up a Fuji camera and began carrying it everywhere.</p>
-        <p>At first I just walked the streets and shot whatever caught my eye: people passing by, light falling across a sidewalk, small moments most people walk right past.</p>
-        <p>Over time I noticed I was drawn less to what was in the frame and more to how it was arranged. Lines, edges, shadows, the way a staircase cuts across a wall or a window repeats down a building. Color started to feel like a distraction, so I moved to black and white. These days that's most of what I look for.</p>
-        <p>This site is where I keep the ones I like. Thanks for stopping by and taking a look.</p>
+        <p data-es="No empecé como fotógrafo. Todo comenzó cuando conseguí una cámara Fuji y empecé a llevarla a todas partes.">I didn't set out as a photographer. It started when I picked up a Fuji camera and began carrying it everywhere.</p>
+        <p data-es="Al principio solo caminaba por las calles y fotografiaba lo que me llamaba la atención: gente que pasaba, la luz cayendo sobre una acera, pequeños momentos que la mayoría de la gente pasa de largo.">At first I just walked the streets and shot whatever caught my eye: people passing by, light falling across a sidewalk, small moments most people walk right past.</p>
+        <p data-es="Con el tiempo me di cuenta de que me atraía menos lo que había en el encuadre y más cómo estaba dispuesto. Líneas, bordes, sombras, la forma en que una escalera atraviesa una pared o una ventana se repite a lo largo de un edificio. El color empezó a sentirse como una distracción, así que me pasé al blanco y negro. Hoy en día, eso es casi todo lo que busco.">Over time I noticed I was drawn less to what was in the frame and more to how it was arranged. Lines, edges, shadows, the way a staircase cuts across a wall or a window repeats down a building. Color started to feel like a distraction, so I moved to black and white. These days that's most of what I look for.</p>
+        <p data-es="Este sitio es donde guardo las que me gustan. Gracias por pasar y echar un vistazo.">This site is where I keep the ones I like. Thanks for stopping by and taking a look.</p>
       </div>
 
       <!-- polaroid of the little human: swaps to the waving pose on hover -->
@@ -61,5 +66,7 @@
       </div>
     </div>
   </div>
+
+  <script src="lang.js"></script>
 </body>
 </html>

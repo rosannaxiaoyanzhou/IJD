@@ -199,6 +199,18 @@ document.addEventListener('keydown', e => {
 // and again when the screen changes size
 document.fonts.load('18px "Nothing You Could Do"').catch(() => {}).then(scatter);
 
+// the captions change size with the language; keep the photos where they
+// are (the gaps between them absorb the difference) and just re-measure
+document.addEventListener('langchange', () => {
+  if (!boxes.length) return;
+  boxes.forEach((b, i) => {
+    const el = originals[i % originals.length];
+    b.w = el.offsetWidth;
+    b.h = el.offsetHeight;
+  });
+  draw();
+});
+
 // (only reshuffle when the screen outgrows the tile, so a phone's address
 // bar sliding in and out leaves the photos where they are)
 let resizeTimer = null;
